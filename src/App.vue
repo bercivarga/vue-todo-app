@@ -72,11 +72,17 @@ body {
 }
 
 .app-card {
-  width: 50%;
+  width: 100%;
   background: white;
   border-radius: 8px;
   padding: 24px 48px;
   box-shadow: 0 0 1px black;
-  transition: all 2s linear;
+  transition: height 2s linear;
+}
+
+@media screen and (min-width: 800px){
+  .app-card {
+    width: 50%;
+  }
 }
 </style>
