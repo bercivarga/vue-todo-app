@@ -6,23 +6,19 @@
         <span>{{ todo.time }}</span>
       </button>
     </li>
+    <TodoInput :add-todo="addTodo" />
   </ul>
-  <form @submit.prevent="addTodo(currentTodo)">
-    <input v-model="currentTodo">
-  </form>
+
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 import { Todo } from '@/data/todoList';
+import TodoInput from '@/components/TodoInput.vue';
 
 export default defineComponent({
   name: 'TodoList',
-  data() {
-    return {
-      currentTodo: '',
-    };
-  },
+  components: { TodoInput },
   props: {
     todos: {
       type: Array as PropType<Todo[]>,
@@ -43,9 +39,6 @@ export default defineComponent({
 <style lang="scss" scoped>
 ul {
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 
   li {
     list-style: none;
