@@ -35,13 +35,6 @@ export default defineComponent({
       required: true,
     },
   },
-  methods: {
-    isInTodos(todoId: string): boolean {
-      const isInArr = this.todos.find((t) => t.id === todoId);
-      console.log(!!isInArr);
-      return !!isInArr;
-    },
-  },
 });
 </script>
 
@@ -72,7 +65,7 @@ ul {
   &:hover,
   &:focus,
   {
-    background-color: forestgreen;
+    background-color: seagreen;
     color: white;
   }
 }

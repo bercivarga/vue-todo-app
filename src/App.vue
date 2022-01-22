@@ -1,8 +1,12 @@
 <template>
-  <h1>
-    Vue todo
-  </h1>
-  <TodoList :todos="todos" :addTodo="addTodo" :deleteTodo="deleteTodo" />
+  <div class="app-container">
+    <div class="app-card">
+      <h1>
+        Vue todo
+      </h1>
+      <TodoList :todos="todos" :addTodo="addTodo" :deleteTodo="deleteTodo" />
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -45,5 +49,34 @@ export default defineComponent({
   font-family: Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+}
+
+.app-container {
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: seagreen;
+}
+
+.app-card {
+  width: 50%;
+  background: white;
+  border-radius: 8px;
+  padding: 24px 48px;
+  box-shadow: 0 0 1px black;
+  transition: all 2s linear;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="addTodo(currentTodo)">
-    <input v-model="currentTodo">
+    <input v-model="currentTodo" placeholder="Enter your todo here...">
     <button type="button" @click.prevent="currentTodo = ''" v-show="currentTodo">
       <svg viewBox="0 0 24 24">
         <path
@@ -34,13 +34,23 @@ export default defineComponent({
 <style lang="scss" scoped>
 form {
   position: relative;
-  display: inline-block;
   margin-top: 16px;
+  width: 100%;
 }
 
 input {
-  padding: 8px 46px 8px 16px;
+  border: none;
+  box-sizing: border-box;
+  padding: 12px 46px 12px 8px;
   font-size: 18px;
+  width: 100%;
+  box-shadow: 0px -2px 0px seagreen inset;
+  transition: box-shadow .2s ease-in-out;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0px -4px 0px seagreen inset;
+  }
 }
 
 button {
