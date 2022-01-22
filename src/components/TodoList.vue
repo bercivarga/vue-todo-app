@@ -1,11 +1,13 @@
 <template>
   <ul>
-    <li v-for="todo in todos" :key="todo.id">
-      <button type="button" class="todo" @click="deleteTodo(todo.id)">
-        <span>{{ todo.name }}</span>
-        <span>{{ todo.time }}</span>
-      </button>
-    </li>
+    <transition-group name="t-li">
+      <li v-for="todo in todos" :key="todo.id">
+          <button type="button" class="todo" @click="deleteTodo(todo.id)">
+            <span>{{ todo.name }}</span>
+            <span>{{ todo.time }}</span>
+          </button>
+      </li>
+    </transition-group>
     <TodoInput :add-todo="addTodo" />
   </ul>
 
@@ -31,6 +33,13 @@ export default defineComponent({
     deleteTodo: {
       type: Function as PropType<(id: string) => void>,
       required: true,
+    },
+  },
+  methods: {
+    isInTodos(todoId: string): boolean {
+      const isInArr = this.todos.find((t) => t.id === todoId);
+      console.log(!!isInArr);
+      return !!isInArr;
     },
   },
 });
@@ -66,5 +75,15 @@ ul {
     background-color: forestgreen;
     color: white;
   }
+}
+
+.t-li-enter-active,
+.t-li-leave-active {
+  transition: opacity .3s ease;
+}
+
+.t-li-enter-from,
+.t-li-leave-to {
+  opacity: 0;
 }
 </style>
