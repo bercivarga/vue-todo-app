@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="addTodo(currentTodo)">
     <input v-model="currentTodo">
-    <button>
+    <button type="button" @click.prevent="currentTodo = ''" v-show="currentTodo">
       <svg viewBox="0 0 24 24">
         <path
           fill="currentColor"

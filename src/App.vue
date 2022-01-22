@@ -1,6 +1,6 @@
 <template>
   <h1>
-    Home page of the vue todo app
+    Vue todo
   </h1>
   <TodoList :todos="todos" :addTodo="addTodo" :deleteTodo="deleteTodo" />
 </template>
