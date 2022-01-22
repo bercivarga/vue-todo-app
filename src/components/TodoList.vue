@@ -56,7 +56,6 @@ ul {
   color: black;
   border: none;
   box-shadow: 0 0 1px black;
-  font-weight: bold;
   font-size: 18px;
   cursor: pointer;
   transition: background-color .2s, color .2s;
