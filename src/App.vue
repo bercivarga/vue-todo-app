@@ -2,13 +2,17 @@
   <h1>
     Home page of the vue todo app
   </h1>
-  <TodoList :todos="todos" />
+  <TodoList :todos="todos" :addTodo="addTodo" :deleteTodo="deleteTodo" />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { v4 as uuidv4 } from 'uuid';
 import TodoList from '@/components/TodoList.vue';
-import data from '@/data/todoList';
+import data, { Todo } from '@/data/todoList';
+import getDate from '@/helpers/getDate';
 
 export default defineComponent({
   name: 'App',
@@ -19,6 +23,19 @@ export default defineComponent({
     return {
       todos: data.data.todos,
     };
+  },
+  methods: {
+    addTodo(todo: string): void {
+      if (!todo) return;
+      this.todos.push(
+        new Todo(uuidv4(), todo, getDate()),
+      );
+    },
+    deleteTodo(id: string): void {
+      this.todos = this.todos.filter((t) => {
+        return t.id !== id;
+      });
+    },
   },
 });
 </script>
